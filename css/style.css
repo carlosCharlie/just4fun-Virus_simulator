@@ -80,7 +80,7 @@ line{
     #map{
         height: 100vh;
         width: auto;
-        overflow: scroll;
+        overflow: hidden;
     }
 
     body{
