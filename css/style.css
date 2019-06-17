@@ -81,4 +81,8 @@ line{
         width: auto;
     }
 
+    body{
+        height: 100vh;
+    }
+
 }
