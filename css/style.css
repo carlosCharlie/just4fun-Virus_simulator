@@ -79,10 +79,12 @@ line{
     #map{
         height: 100vh;
         width: auto;
+        overflow: scroll;
     }
 
     body{
         height: 100vh;
+        overflow: hidden;
     }
 
 }
