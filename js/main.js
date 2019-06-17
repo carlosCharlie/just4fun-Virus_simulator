@@ -45,9 +45,11 @@ let countries = {};
 const connections = new Connections();
 let countryOver = "usa";
 
+alert("prueba1");
+
 window.onload = function(){
 
-
+        alert("prueba2")
         map = document.getElementById("map").contentDocument.activeElement;
 
         for(country of map.getElementsByTagName("path")){
