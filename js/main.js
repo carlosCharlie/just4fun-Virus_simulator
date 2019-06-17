@@ -59,18 +59,19 @@ window.onload = function(){
         y:(((country.getBoundingClientRect().height/2)+country.getBoundingClientRect().top)*620)/map.getBoundingClientRect().height
         });
 
-        countries[country.id].html.onclick = function(event){
-            countries[event.target.id].setPatientZero();
-            event.target.classList.add("clicked");
-            document.getElementById("click").style.display="none";
-        };
-
         countries[country.id].html.ontouchstart = function(event){
             countries[event.target.id].setPatientZero();
             event.target.classList.add("clicked");
             document.getElementById("click").style.display="none";
+            alert("funciona el touch")
          }
 
+    /*     countries[country.id].html.onclick = function(event){
+            countries[event.target.id].setPatientZero();
+            event.target.classList.add("clicked");
+            document.getElementById("click").style.display="none";
+        };
+    */
         countries[country.id].html.onmouseover = function(event){
             
             document.getElementById("info").innerHTML = event.target.id +" "+ (Math.trunc(countries[event.target.id].getInfection()/2))+"%";
