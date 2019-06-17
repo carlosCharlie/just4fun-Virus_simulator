@@ -70,6 +70,7 @@ window.onload = function(){
             
             document.getElementById("info").innerHTML = event.target.id +" "+ (Math.trunc(countries[event.target.id].getInfection()/2))+"%";
             countryOver = event.target.id;
+            alert("over")
         
         };
         
