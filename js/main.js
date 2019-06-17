@@ -45,11 +45,8 @@ let countries = {};
 const connections = new Connections();
 let countryOver = "usa";
 
-alert("prueba1");
-
 window.onload = function(){
 
-        alert("prueba2")
         map = document.getElementById("map").contentDocument.activeElement;
 
         for(country of map.getElementsByTagName("path")){
@@ -62,13 +59,14 @@ window.onload = function(){
             y:(((country.getBoundingClientRect().height/2)+country.getBoundingClientRect().top)*620)/map.getBoundingClientRect().height
             });
 
-            countries[country.id].html.ontouchstart = function(event){
+            countries[country.id].html.onpointerdown = function(event){
                 event.preventDefault();
                 countries[event.target.id].setPatientZero();
                 event.target.classList.add("clicked");
                 document.getElementById("click").style.display="none";
+                alert("prueba2")
             };
-            /*
+            
             countries[country.id].html.onmouseover = function(event){
                 
                 document.getElementById("info").innerHTML = event.target.id +" "+ (Math.trunc(countries[event.target.id].getInfection()/2))+"%";
@@ -76,7 +74,7 @@ window.onload = function(){
 
             
             };
-            */
+            
             
         }
 
