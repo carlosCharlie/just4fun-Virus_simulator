@@ -21,7 +21,7 @@ body{
     position: fixed;
     font-size: 200%;
     color:var(--connection-color);
-    pointer-events: none;
+    
 }
 
 #click{
