@@ -4,6 +4,7 @@
 <p align="center"><img src="media/capture.gif"></p>
 
 A simple project developed only with hml, css Javascript and an SVG map.
+
 To avoid making the simulation completely random, I have applied some rules that bring more realism:
 
 <ul>
