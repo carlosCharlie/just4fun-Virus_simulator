@@ -45,7 +45,7 @@ let countries = {};
 const connections = new Connections();
 let countryOver = "usa";
 
-window.onload = function(){
+map.onload = function(){
 
     map = document.getElementById("map").contentDocument.activeElement;
 
@@ -59,7 +59,7 @@ window.onload = function(){
         y:(((country.getBoundingClientRect().height/2)+country.getBoundingClientRect().top)*620)/map.getBoundingClientRect().height
         });
 
-        document.getElementById("click").ontouchend = function(event){
+        countries[country.id].html.onmousedown = function(event){
             countries[event.target.id].setPatientZero();
             event.target.classList.add("clicked");
             document.getElementById("click").style.display="none";
