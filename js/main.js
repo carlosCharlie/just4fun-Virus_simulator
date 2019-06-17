@@ -66,13 +66,13 @@ window.onload = function(){
                 document.getElementById("click").style.display="none";
             };
 
-            countries[country.id].html.onmouseover = function(event){
+            /*countries[country.id].html.onmouseover = function(event){
                 
                 document.getElementById("info").innerHTML = event.target.id +" "+ (Math.trunc(countries[event.target.id].getInfection()/2))+"%";
                 countryOver = event.target.id;
 
             
-            };
+            };*/
             
         }
 
