@@ -1,0 +1,84 @@
+
+/*General*/
+:root{
+    --water-color:#080926;
+    --infection-color:#F23D3D;
+    --connection-color:#F2BB13;
+    --country-color:#042549;
+    --dead-color:black;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: var(--water-color);
+    font-family: 'Courier New', Courier, monospace;
+}
+.msg{
+    margin: 5%;
+    position: fixed;
+    font-size: 200%;
+    color:var(--connection-color);
+}
+
+#click{
+    margin: auto;
+    top:50vh;
+    overflow: visible;
+    text-align: center;
+    width: 100vw;
+}
+#map{
+    width: 100vw;
+    z-index: -2;
+}
+svg*{
+    z-index: -2;
+}
+path{
+    stroke: var(--infection-color);
+    fill:var(--country-color);
+    stroke-width: 0%;
+}
+
+path:hover, .clicked{
+    stroke-width: 1px;
+}
+
+line{
+    stroke: var(--connection-color);
+    stroke-width: "1px";
+    stroke-dasharray: 5;
+    animation-name: line-animation;
+    animation-duration: 50s;
+    animation-iteration-count:infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes line-animation {
+    from {stroke-dashoffset:100%}
+    to {stroke-dashoffset: 0%}
+  }
+
+.dead{
+    animation-name: dead-animation;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes dead-animation {
+    to {fill: var(--dead-color)};
+  }
+
+  /*MOBILE VERSION*/
+@media (orientation:portrait)
+{
+    #map{
+        height: 100vh;
+        width: auto;
+    }
+
+}
