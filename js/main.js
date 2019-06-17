@@ -47,38 +47,39 @@ let countryOver = "usa";
 
 window.onload = function(){
 
-    map = document.getElementById("map").contentDocument.activeElement;
 
-    for(country of map.getElementsByTagName("path")){
-        countries[country.id] = new Country(
-        {
-        size:country.getBoundingClientRect().width*country.getBoundingClientRect().height,
-        html:country,
-        name:country.id,
-        x:(((country.getBoundingClientRect().width/2)+country.getBoundingClientRect().left)*950)/map.getBoundingClientRect().width,
-        y:(((country.getBoundingClientRect().height/2)+country.getBoundingClientRect().top)*620)/map.getBoundingClientRect().height
-        });
+        map = document.getElementById("map").contentDocument.activeElement;
 
-        document.getElementById("click").onpointerdown = function(event){
-            //countries[event.target.id].setPatientZero();
-            event.target.classList.add("clicked");
-            document.getElementById("click").style.display="none";
-        };
+        for(country of map.getElementsByTagName("path")){
+            countries[country.id] = new Country(
+            {
+            size:country.getBoundingClientRect().width*country.getBoundingClientRect().height,
+            html:country,
+            name:country.id,
+            x:(((country.getBoundingClientRect().width/2)+country.getBoundingClientRect().left)*950)/map.getBoundingClientRect().width,
+            y:(((country.getBoundingClientRect().height/2)+country.getBoundingClientRect().top)*620)/map.getBoundingClientRect().height
+            });
 
-        countries[country.id].html.onmouseover = function(event){
+            countries[country.id].html.ontouchstart = function(event){
+                countries[event.target.id].setPatientZero();
+                event.target.classList.add("clicked");
+                document.getElementById("click").style.display="none";
+            };
+
+            countries[country.id].html.onmouseover = function(event){
+                
+                document.getElementById("info").innerHTML = event.target.id +" "+ (Math.trunc(countries[event.target.id].getInfection()/2))+"%";
+                countryOver = event.target.id;
+
             
-            document.getElementById("info").innerHTML = event.target.id +" "+ (Math.trunc(countries[event.target.id].getInfection()/2))+"%";
-            countryOver = event.target.id;
+            };
+            
+        }
 
         
-        };
-        
-    }
+        mainLoop();
 
     
-    mainLoop();
-
-        
 }
 
 

@@ -21,7 +21,6 @@ body{
     position: fixed;
     font-size: 200%;
     color:var(--connection-color);
-    
 }
 
 #click{
@@ -30,6 +29,7 @@ body{
     overflow: visible;
     text-align: center;
     width: 100vw;
+    pointer-events: none;
 }
 #map{
     width: 100vw;
