@@ -60,7 +60,7 @@ window.onload = function(){
         });
 
         document.getElementById("click").onpointerdown = function(event){
-            countries[event.target.id].setPatientZero();
+            //countries[event.target.id].setPatientZero();
             event.target.classList.add("clicked");
             document.getElementById("click").style.display="none";
         };
