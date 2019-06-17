@@ -76,7 +76,7 @@ window.onload = function(){
         
     }
 
-    
+    alert("alerta")
     mainLoop();
 
         
