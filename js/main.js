@@ -74,6 +74,9 @@ window.onload = function(){
             
             document.getElementById("info").innerHTML = event.target.id +" "+ (Math.trunc(countries[event.target.id].getInfection()/2))+"%";
             countryOver = event.target.id;
+
+            event.target.classList.add("clicked");
+            document.getElementById("click").style.display="none";
         
         };
         
