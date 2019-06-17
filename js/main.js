@@ -59,7 +59,7 @@ window.onload = function(){
         y:(((country.getBoundingClientRect().height/2)+country.getBoundingClientRect().top)*620)/map.getBoundingClientRect().height
         });
 
-        map.html.ontouchend = function(event){
+        document.getElementById("click").ontouchend = function(event){
             countries[event.target.id].setPatientZero();
             event.target.classList.add("clicked");
             document.getElementById("click").style.display="none";
