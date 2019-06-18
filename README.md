@@ -3,7 +3,7 @@
 <h4 align="center"> Try the interactive online version <a href="https://carloscharlie.github.io/just4fun-Virus_simulator/">here</a>.</h4>
 <p align="center"><img src="media/capture.gif"></p>
 
-A simple project developed only with hml, css Javascript and an SVG map.
+A simple project developed only with hml, css Javascript and a SVG map.
 
 To avoid making the simulation completely random, I have applied some rules that bring more realism:
 
