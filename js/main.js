@@ -2,6 +2,7 @@ let infectedColor;
 let countryColor;
 
 
+
 class Connections{
     constructor(){
         this._connections = {};
@@ -45,6 +46,37 @@ let countries = {};
 const connections = new Connections();
 let countryOver = "usa";
 
+
+function mainLoop(){
+
+    infectedColor = getComputedStyle(document.documentElement).getPropertyValue('--infection-color').match("[A-Z0-9]+")[0].match(/[A-Z0-9]{2}/g).map(e=>parseInt("0x"+e));
+    countryColor = getComputedStyle(document.documentElement).getPropertyValue('--country-color').match("[A-Z0-9]+")[0].match(/[A-Z0-9]{2}/g).map(e=>parseInt("0x"+e));
+    
+    setInterval(function(){
+
+        let infected = Object.values(countries).filter((country)=>country.isInfected());
+
+        infected.forEach(i=>i.refreshState(Object.values(countries),connections));
+
+        Object.values(countries).forEach(country => {
+              
+            let rawColor = countryColor.map((factor,i)=>((country.getInfection()*(infectedColor[i]-factor)/100))+factor);
+            country.html.style.fill = "rgb("+rawColor[0]+","+rawColor[1]+","+rawColor[2]+")";
+            if(country.getInfection()>=200)country.html.classList.add("dead");
+        });
+
+        while(connections._order.length>Object.values(countries).filter((element)=>element.getInfection()>0 && element.getInfection()<100).length){
+            map.removeChild(connections._order[0]);
+            connections._order[0]=undefined;
+            connections._order.shift();
+        }
+
+        document.getElementById("info").innerHTML = countryOver +" "+ (Math.trunc(countries[countryOver].getInfection()/2))+"%";
+
+    },500)
+}
+
+
     alert("window onload");
         
         map = document.getElementById("map").contentDocument.activeElement;
@@ -78,38 +110,4 @@ let countryOver = "usa";
             
             
         }
-
-        
         mainLoop();
-
-    
-
-
-function mainLoop(){
-
-    infectedColor = getComputedStyle(document.documentElement).getPropertyValue('--infection-color').match("[A-Z0-9]+")[0].match(/[A-Z0-9]{2}/g).map(e=>parseInt("0x"+e));
-    countryColor = getComputedStyle(document.documentElement).getPropertyValue('--country-color').match("[A-Z0-9]+")[0].match(/[A-Z0-9]{2}/g).map(e=>parseInt("0x"+e));
-    
-    setInterval(function(){
-
-        let infected = Object.values(countries).filter((country)=>country.isInfected());
-
-        infected.forEach(i=>i.refreshState(Object.values(countries),connections));
-
-        Object.values(countries).forEach(country => {
-              
-            let rawColor = countryColor.map((factor,i)=>((country.getInfection()*(infectedColor[i]-factor)/100))+factor);
-            country.html.style.fill = "rgb("+rawColor[0]+","+rawColor[1]+","+rawColor[2]+")";
-            if(country.getInfection()>=200)country.html.classList.add("dead");
-        });
-
-        while(connections._order.length>Object.values(countries).filter((element)=>element.getInfection()>0 && element.getInfection()<100).length){
-            map.removeChild(connections._order[0]);
-            connections._order[0]=undefined;
-            connections._order.shift();
-        }
-
-        document.getElementById("info").innerHTML = countryOver +" "+ (Math.trunc(countries[countryOver].getInfection()/2))+"%";
-
-    },500)
-}
