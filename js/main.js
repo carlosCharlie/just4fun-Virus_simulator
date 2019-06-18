@@ -46,6 +46,7 @@ const connections = new Connections();
 let countryOver = "usa";
 
 alert("prueba0");
+document.body.onload(()=>alert("cargado1"));
 
 document.addEventListener("DOMContentLoaded",function(){
     document.getElementById("map").onload = function(){
