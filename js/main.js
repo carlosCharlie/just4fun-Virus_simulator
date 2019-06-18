@@ -84,6 +84,7 @@ function mainLoop(){
 
         map = document.getElementById("map").contentDocument.activeElement;
         
+        alert(map.getElementsByTagName("path").length)
         for(country of map.getElementsByTagName("path")){
             alert("prueba0")
             countries[country.id] = new Country(
