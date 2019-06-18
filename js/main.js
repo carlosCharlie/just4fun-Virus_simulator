@@ -45,6 +45,8 @@ let countries = {};
 const connections = new Connections();
 let countryOver = "usa";
 
+alert("prueba0");
+
 document.addEventListener("DOMContentLoaded",function(){
     document.getElementById("map").onload = function(){
         
