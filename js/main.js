@@ -80,7 +80,7 @@ function mainLoop(){
     alert("window onload");
         
         map = document.getElementById("map").contentDocument.activeElement;
-        alert(map)
+        alert(map.getElementsByTagName("path"))
         for(country of map.getElementsByTagName("path")){
             countries[country.id] = new Country(
             {
