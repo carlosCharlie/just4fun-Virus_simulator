@@ -45,14 +45,11 @@ let countries = {};
 const connections = new Connections();
 let countryOver = "usa";
 
-alert("prueba0");
-document.body.onload(()=>alert("cargado1"));
-
-document.addEventListener("DOMContentLoaded",function(){
-    document.getElementById("map").onload = function(){
+window.onload = function(){
+    alert("window onload");
         
         map = document.getElementById("map").contentDocument.activeElement;
-
+        alert(map)
         for(country of map.getElementsByTagName("path")){
             countries[country.id] = new Country(
             {
@@ -86,8 +83,7 @@ document.addEventListener("DOMContentLoaded",function(){
         
         mainLoop();
 
-    }
-});
+    };
 
 
 function mainLoop(){
