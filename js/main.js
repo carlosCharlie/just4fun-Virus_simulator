@@ -59,6 +59,7 @@ window.onload = function(){
             y:(((country.getBoundingClientRect().height/2)+country.getBoundingClientRect().top)*620)/map.getBoundingClientRect().height
             });
 
+            alert("prueba1")
             countries[country.id].html.onpointerdown = function(event){
                 event.preventDefault();
                 countries[event.target.id].setPatientZero();
