@@ -82,8 +82,10 @@ function mainLoop(){
 
     alert("window onload");
 
-        map = document.getElementById("map").contentDocument.activeElement;
-        
+    map = document.getElementById("map").contentDocument.activeElement;
+    
+    map.onload = function(){
+
         alert(map.getElementsByTagName("path").length)
         for(country of map.getElementsByTagName("path")){
             alert("prueba0")
@@ -116,3 +118,4 @@ function mainLoop(){
             
         }
         mainLoop();
+    }
