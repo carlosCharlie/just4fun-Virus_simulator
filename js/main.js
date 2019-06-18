@@ -1,7 +1,10 @@
 let infectedColor;
 let countryColor;
 
-
+window.onerror = function(error) {
+    // do something clever here
+    this.console.log (error); // do NOT do this for real!
+  };
 
 class Connections{
     constructor(){
@@ -78,10 +81,11 @@ function mainLoop(){
 
 
     alert("window onload");
-        
+
         map = document.getElementById("map").contentDocument.activeElement;
-        alert(map.getElementsByTagName("path"))
+        
         for(country of map.getElementsByTagName("path")){
+            alert("prueba0")
             countries[country.id] = new Country(
             {
             size:country.getBoundingClientRect().width*country.getBoundingClientRect().height,
