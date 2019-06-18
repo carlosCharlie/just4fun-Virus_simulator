@@ -6,7 +6,7 @@
 A simple project developed only with hml, css Javascript and a SVG map.
 
 To avoid making the simulation completely random, I have applied some rules that bring more realism:
-
+ 
 <ul>
   <li>It is more likely to infect nearby areas.</li> 
   <li>A more infected area has a greater effect on the rest of the areas.</li>
