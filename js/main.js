@@ -45,8 +45,9 @@ let countries = {};
 const connections = new Connections();
 let countryOver = "usa";
 
-window.onload = function(){
-
+document.addEventListener("DOMContentLoaded",function(){
+    document.getElementById("map").onload = function(){
+        
         map = document.getElementById("map").contentDocument.activeElement;
 
         for(country of map.getElementsByTagName("path")){
@@ -82,8 +83,8 @@ window.onload = function(){
         
         mainLoop();
 
-    
-}
+    }
+});
 
 
 function mainLoop(){
