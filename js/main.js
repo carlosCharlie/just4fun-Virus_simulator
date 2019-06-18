@@ -45,7 +45,6 @@ let countries = {};
 const connections = new Connections();
 let countryOver = "usa";
 
-window.onload = function(){
     alert("window onload");
         
         map = document.getElementById("map").contentDocument.activeElement;
@@ -83,7 +82,7 @@ window.onload = function(){
         
         mainLoop();
 
-    };
+    
 
 
 function mainLoop(){
