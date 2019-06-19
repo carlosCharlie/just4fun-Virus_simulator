@@ -47,6 +47,7 @@ let countryOver = "usa";
 
 function main(){
         
+        window.scrollTo(0, 0);
         map = document.getElementById("map");
 
         for(country of map.getElementsByTagName("path")){
