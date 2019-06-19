@@ -33,9 +33,7 @@ body{
 }
 #map{
     width: 100vw;
-    z-index: -2;
-}
-svg*{
+    height: 65vw;
     z-index: -2;
 }
 path{
@@ -80,12 +78,10 @@ line{
     #map{
         height: 100vh;
         width: auto;
-        overflow: hidden;
     }
 
     body{
         height: 100vh;
-        overflow: hidden;
     }
 
 }

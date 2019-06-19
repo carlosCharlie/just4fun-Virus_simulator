@@ -1,10 +1,6 @@
 let infectedColor;
 let countryColor;
 
-window.onerror = function(error) {
-    // do something clever here
-    this.console.log (error); // do NOT do this for real!
-  };
 
 class Connections{
     constructor(){
@@ -49,6 +45,44 @@ let countries = {};
 const connections = new Connections();
 let countryOver = "usa";
 
+function main(){
+        
+        map = document.getElementById("map");
+
+        for(country of map.getElementsByTagName("path")){
+            countries[country.id] = new Country(
+            {
+            size:country.getBoundingClientRect().width*country.getBoundingClientRect().height,
+            html:country,
+            name:country.id,
+            x:(((country.getBoundingClientRect().width/2)+country.getBoundingClientRect().left)*950)/map.getBoundingClientRect().width,
+            y:(((country.getBoundingClientRect().height/2)+country.getBoundingClientRect().top)*620)/map.getBoundingClientRect().height
+            });
+
+            countries[country.id].html.onpointerdown = function(event){
+                event.preventDefault();
+                countries[event.target.id].setPatientZero();
+                event.target.classList.add("clicked");
+                document.getElementById("click").style.display="none";
+                
+            };
+            
+            countries[country.id].html.onmouseover = function(event){
+                
+                document.getElementById("info").innerHTML = event.target.id +" "+ (Math.trunc(countries[event.target.id].getInfection()/2))+"%";
+                countryOver = event.target.id;
+
+            
+            };
+            
+            
+        }
+
+        
+        mainLoop();
+
+};
+
 
 function mainLoop(){
 
@@ -78,44 +112,3 @@ function mainLoop(){
 
     },500)
 }
-
-
-    alert("window onload");
-
-    map = document.getElementById("map").contentDocument.activeElement;
-    
-    map.onload = function(){
-
-        alert(map.getElementsByTagName("path").length)
-        for(country of map.getElementsByTagName("path")){
-            alert("prueba0")
-            countries[country.id] = new Country(
-            {
-            size:country.getBoundingClientRect().width*country.getBoundingClientRect().height,
-            html:country,
-            name:country.id,
-            x:(((country.getBoundingClientRect().width/2)+country.getBoundingClientRect().left)*950)/map.getBoundingClientRect().width,
-            y:(((country.getBoundingClientRect().height/2)+country.getBoundingClientRect().top)*620)/map.getBoundingClientRect().height
-            });
-
-            alert("prueba1")
-            countries[country.id].html.onpointerdown = function(event){
-                event.preventDefault();
-                countries[event.target.id].setPatientZero();
-                event.target.classList.add("clicked");
-                document.getElementById("click").style.display="none";
-                alert("prueba2")
-            };
-            
-            countries[country.id].html.onmouseover = function(event){
-                
-                document.getElementById("info").innerHTML = event.target.id +" "+ (Math.trunc(countries[event.target.id].getInfection()/2))+"%";
-                countryOver = event.target.id;
-
-            
-            };
-            
-            
-        }
-        mainLoop();
-    }
