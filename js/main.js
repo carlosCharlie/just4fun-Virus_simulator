@@ -55,8 +55,8 @@ function main(){
             size:country.getBoundingClientRect().width*country.getBoundingClientRect().height,
             html:country,
             name:country.id,
-            x:(((country.getBoundingClientRect().width/2)+country.getBoundingClientRect().left)*950)/map.getBoundingClientRect().width,
-            y:(((country.getBoundingClientRect().height/2)+country.getBoundingClientRect().top)*620)/map.getBoundingClientRect().height
+            x:window.scrollX+(((country.getBoundingClientRect().width/2)+country.getBoundingClientRect().left)*950)/map.getBoundingClientRect().width,
+            y:window.screenY+(((country.getBoundingClientRect().height/2)+country.getBoundingClientRect().top)*620)/map.getBoundingClientRect().height
             });
 
             countries[country.id].html.onpointerdown = function(event){
