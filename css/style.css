@@ -76,7 +76,7 @@ line{
 @media (orientation:portrait)
 {
     #map{
-        height: 150vh;
+        height: 105vh;
         width: auto;
     }
 
