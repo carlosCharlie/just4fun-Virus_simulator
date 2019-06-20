@@ -1,6 +1,6 @@
 let infectedColor;
 let countryColor;
-
+let pointerType = null;
 
 class Connections{
     constructor(){
@@ -65,7 +65,7 @@ function main(){
                 countries[event.target.id].setPatientZero();
                 event.target.classList.add("clicked");
                 document.getElementById("click").style.display="none";
-                
+                pointerType = event.pointerType;
             };
             
             countries[country.id].html.onmouseover = function(event){
@@ -87,6 +87,7 @@ function main(){
 
 function mainLoop(){
 
+    let max = -1;
     infectedColor = getComputedStyle(document.documentElement).getPropertyValue('--infection-color').match("[A-Z0-9]+")[0].match(/[A-Z0-9]{2}/g).map(e=>parseInt("0x"+e));
     countryColor = getComputedStyle(document.documentElement).getPropertyValue('--country-color').match("[A-Z0-9]+")[0].match(/[A-Z0-9]{2}/g).map(e=>parseInt("0x"+e));
     
@@ -101,6 +102,11 @@ function mainLoop(){
             let rawColor = countryColor.map((factor,i)=>((country.getInfection()*(infectedColor[i]-factor)/100))+factor);
             country.html.style.fill = "rgb("+rawColor[0]+","+rawColor[1]+","+rawColor[2]+")";
             if(country.getInfection()>=200)country.html.classList.add("dead");
+
+            if(country.getInfection()>=max && country.getInfection()<100 && pointerType!="mouse"){
+                countryOver = country.name;
+                max = country.getInfection();
+            }
         });
 
         while(connections._order.length>Object.values(countries).filter((element)=>element.getInfection()>0 && element.getInfection()<100).length){
